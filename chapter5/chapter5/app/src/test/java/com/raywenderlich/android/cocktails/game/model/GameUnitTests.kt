@@ -17,6 +17,23 @@ class GameUnitTests {
         assertEquals(1, game.currentScore)
         assertEquals("Current score should have been 1",
             1, game.currentScore)
+    }
 
+    @Test
+    fun whenIncrementingScore_aboveHighScore_shouldAlsoIncrementHighScore() {
+        val game = Game()
+
+        game.incrementScore()
+
+        assertEquals(1, game.highestScore)
+    }
+
+    @Test
+    fun whenIncrementingScore_belowHighScore_shouldNotIncrementHighScore() {
+        val game = Game(10)
+
+        game.incrementScore()
+
+        assertEquals(10, game.highestScore)
     }
 }
